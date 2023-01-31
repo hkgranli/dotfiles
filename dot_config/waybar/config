@@ -1,0 +1,89 @@
+{
+    "layer": "top",
+    "margin": "5 5 5 5",
+    "modules-left": ["wlr/workspaces", "custom/pipe", "hyprland/window"],
+    "modules-center": ["clock", "custom/weather"],
+    "modules-right": ["custom/kernel", "custom/pipe", "custom/ip", "custom/pipe", "pulseaudio", "custom/pipe", "custom/mem", "custom/pipe", "tray"],
+
+    //***************************
+    //*  Modules configuration  *
+    //***************************
+
+    "wlr/workspaces": {
+        "disable-scroll": true,
+	"all-outputs" : true, 
+	"on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        },
+    },
+
+    "clock": {
+        "format": "{:\udb85\udc4b %R    %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+"custom/kernel": {
+	"format" : "{} \uf31a",
+	"exec" : "uname -r",
+    "tooltip": false,
+},
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/wttr.py",
+        "return-type": "json"
+    },
+    "custom/pipe" : {
+        "format" : "|",
+    "tooltip": false,
+    },
+
+"hyprland/window" : {
+	"format": "{}",
+    "tooltip": false,
+},
+"custom/ip": {
+    "format": "{} \ueb01",
+    "interval": 60,
+    "exec": "$HOME/.config/waybar/scripts/ifconfig.sh",
+    "tooltip": false,
+},
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "reverse-scrolling": 0,
+	"interval" : 60,
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "婢 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["奄", "奔", "墳"]
+        },
+        "on-click": "pavucontrol",
+    },
+
+    "custom/mem": {
+        "format": "{} ",
+        "interval": 3,
+        "exec": "free -h | awk '/Mem:/{printf $3}'",
+        "tooltip": false,
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+}

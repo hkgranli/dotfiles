@@ -1,0 +1,42 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+alias ls="exa --icons"
+
+# set makeflag x cores
+export MAKEFLAGS="-j 12"
+
+export XDG_CONFIG_HOME="/home/hansk/.config"
+
+alias py=python3
+
+alias please='sudo'
+alias fucking='sudo'
+alias kys='sudo poweroff'
+
+alias kp='echo -n "zlb5" | xclip -selection c'
+alias saveimg='xclip -selection clipboard -target image/png -out >'
+
+alias steamos="steam -steamos -gamepadui & disown"
+alias dlp="yt-dlp"
+alias hx="helix"
+alias lg="looking-glass-client -m 97 -p 5900 -k"
+alias vim=nvim
+
+alias fix-audio="systemctl --user restart wireplumber pipewire pipewire-pulse"
+
+alias gamescope="gamescope --prefer-vk-device 1002:73df" 
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+
+export BAT_THEME=Coldark-Cold
+
+eval "$(starship init bash)"
